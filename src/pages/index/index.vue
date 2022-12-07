@@ -1,5 +1,11 @@
 <template>
 	<view class="content">
+		<!-- #ifdef APP-IOS -->
+		<text class="title">ios</text>
+		<!-- #endif -->
+		<!-- #ifdef APP-ANDROID -->
+		<text class="title">ANDROID</text>
+		<!-- #endif -->
 		<image class="logo" src="/static/logo.png"></image>
 		<view>
 			<text class="title">{{title}}</text>
