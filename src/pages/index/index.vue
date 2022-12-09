@@ -1,4 +1,4 @@
-<template>
+ <template>
 	<view class="content">
 		<!-- #ifdef APP-IOS -->
 		<text class="title">ios</text>
@@ -6,7 +6,16 @@
 		<!-- #ifdef APP-ANDROID -->
 		<text class="title">ANDROID</text>
 		<!-- #endif -->
-		<image class="logo" src="/static/logo.png"></image>
+		<!-- <image class="logo" src="/static/logo.png"></image> -->
+		<uni-file-picker 
+			v-model="imageValue" 
+			fileMediatype="image" 
+			mode="grid" 
+			@select="select" 
+			@progress="progress" 
+			@success="success" 
+			@fail="fail" 
+		/>
 		<view>
 			<text class="title">{{title}}</text>
 		</view>
@@ -14,17 +23,25 @@
 </template>
 
 <script>
+import uniFilePicker from "@/uni_modules/uni-file-picker/components/uni-file-picker/uni-file-picker";
 	export default {
 		data() {
 			return {
+				imageValue: [],
 				title: 'Hello'
 			}
+		},
+		components: {
+			uniFilePicker
 		},
 		onLoad() {
 
 		},
 		methods: {
-
+			select() {},
+			progress() {},
+			success() {},
+			fail() {},
 		}
 	}
 </script>
