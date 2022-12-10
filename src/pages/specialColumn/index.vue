@@ -3,13 +3,14 @@
   <div class="wrapper">
     
 		<uni-file-picker 
-			v-model="imageValue" 
-			fileMediatype="image" 
-			mode="grid" 
-			@select="select" 
-			@progress="progress" 
-			@success="success" 
-			@fail="fail" 
+      return-type="object"
+      limit="1"
+      ref="files"
+      :auto-upload="false"
+			v-model="fileValue"
+      file-mediatype="all"
+      file-extname="txt,pdf,word"
+      @select="select"
 		/>
   </div>
 </template>
@@ -23,12 +24,25 @@ export default {
 
   data () {
     return {
+      fileValue: {},
+
     }
   },
 
   computed: {},
 
-  methods: {},
+  methods: {
+    select(e) {
+      console.log(e);
+      // console.log(this.fileValue);
+      const readerFile = new FileReader()
+      readerFile.readAsText(e.tempFiles[0].file);
+      // 文件内容
+      const fileContent = readerFile.result
+      console.log(readerFile);
+    },
+
+  },
 
   created() {}
 }
